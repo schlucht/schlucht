@@ -1,0 +1,13 @@
+<div class="landing-container">
+  <div class="hero">
+    <h1>Willkommen bei Schlucht</h1>
+    <p class="subtitle">Ihre Plattform für effizientes Management</p>
+    <div class="cta-buttons">
+      @if (isLoggedIn()) {
+        <a routerLink="/dashboard" class="btn btn-primary">Zum Dashboard</a>
+      } @else {
+        <a routerLink="/auth/signin" class="btn btn-primary">Anmelden</a>
+      }
+    </div>
+  </div>
+</div>

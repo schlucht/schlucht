@@ -1,0 +1,39 @@
+:root {
+    /* Primärfarben */
+    --gold: #D4AF37;           /* Klassisches Gold */
+    --dark-purple: #3D1F47;    /* Dunkellila */
+    --burnt-orange: #CC5500;   /* Gebranntes Orange */
+    --chocolate: #5C4033;      /* Schokoladenbraun */
+
+    /* Akzentfarben */
+    --light-gold: #F4D03F;     /* Helles Gold */
+    --deep-purple: #2A1434;    /* Tiefes Lila */
+    --terracotta: #E67E22;     /* Terrakotta Orange */
+    --caramel: #8B6F47;        /* Karamell Braun */
+
+    /* Neutrale Unterstützungsfarben */
+    --cream: #F5E6D3;          /* Cremig für Hintergründe */
+    --dark-brown: #3E2723;     /* Dunkelbraun für Text */
+    --pale-gold: #FFF8E7;      /* Blasses Gold für subtile Akzente */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-base: 1.4rem;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 65.25%; /* 10px Basisgröße */
+    scroll-behavior: smooth;
+    min-width: 320px;
+}
+
+body{
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    background-color: var(--cream);
+    color: var(--dark-brown);
+}

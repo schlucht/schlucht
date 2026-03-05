@@ -1,0 +1,24 @@
+<div class="main-layout">
+  <header class="header">
+    <div class="header-content">
+      <div class="header-left">
+        <a routerLink="/" class="nav-link">
+            <h2 class="logo">Schlucht</h2>
+        </a>
+        <nav class="nav">
+          <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">Dashboard</a>
+          <a routerLink="/dashboard/users" routerLinkActive="active" class="nav-link">Benutzer</a>
+        </nav>
+      </div>
+      <div class="header-right">
+        <span class="user-name">{{ user()?.firstName }}</span>
+        <button (click)="logout()" class="btn-logout">Abmelden</button>
+      </div>
+    </div>
+  </header>  
+  <main class="content">
+    <router-outlet />
+  </main>
+  
+  <ots-footer />
+</div>

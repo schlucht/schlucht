@@ -1,0 +1,67 @@
+<div class="signin-container">
+  <div class="signin-card">
+    <h1>Anmelden</h1>
+
+    @if (errorMessage()) {
+      <div class="error-message" role="alert">
+        {{ errorMessage() }}
+      </div>
+    }
+
+    <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">E-Mail</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          [class.invalid]="signinForm.controls.email.invalid && signinForm.controls.email.touched"
+          placeholder="beispiel@email.de"
+        />
+        @if (signinForm.controls.email.invalid && signinForm.controls.email.touched) {
+          <div class="field-error">
+            @if (signinForm.controls.email.errors?.['required']) {
+              <span>E-Mail ist erforderlich</span>
+            }
+            @if (signinForm.controls.email.errors?.['email']) {
+              <span>Ungültige E-Mail-Adresse</span>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="password">Passwort</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          [class.invalid]="signinForm.controls.password.invalid && signinForm.controls.password.touched"
+          placeholder="Passwort eingeben"
+        />
+        @if (signinForm.controls.password.invalid && signinForm.controls.password.touched) {
+          <div class="field-error">
+            @if (signinForm.controls.password.errors?.['required']) {
+              <span>Passwort ist erforderlich</span>
+            }
+            @if (signinForm.controls.password.errors?.['minlength']) {
+              <span>Passwort muss mindestens 6 Zeichen lang sein</span>
+            }
+          </div>
+        }
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="signinForm.invalid || isSubmitting()"
+        class="submit-button"
+      >
+        @if (isSubmitting()) {
+          <span>Wird geladen …</span>
+        } @else {
+          <span>Anmelden</span>
+        }
+      </button>
+    </form>
+  </div>
+</div>
