@@ -1,11 +1,13 @@
 <div class="home-container">
   <div class="welcome-card">
-    <h1>Willkommen zurück, {{ user()?.firstname }}!</h1>
-    <p>Schön, dass Sie wieder da sind.</p>
-    
-    <div class="actions-section">
-      <h2>Verwaltung</h2>
-      <a routerLink="/dashboard/users" class="btn">Benutzer verwalten</a>
-    </div>
+    <h1>Willkommen, {{ user()?.firstname }}!</h1>
+    <p>Dein Dashboard</p>    
+  </div>
+  <div class="cards">    
+    <ots-card>
+      <p>Anzahl Benutzer: <span class="note">{{ count() }}</span></p>
+    </ots-card>
+    <ots-card />
+    <ots-card />
   </div>
 </div>

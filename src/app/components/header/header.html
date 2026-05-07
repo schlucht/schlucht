@@ -1,0 +1,25 @@
+<header>
+  <nav>
+    <div class="menu-left">
+      <a routerLink="/" class="brand">JaGoLo</a>
+      <ul>
+        <li><a routerLink="/">Startseite</a></li>
+        <li><a routerLink="/books">Bücher</a></li>
+        <li><a routerLink="/bible">Bibel</a></li>
+        <li><a routerLink="/about">Wir sind</a></li>
+        <li><a routerLink="/impressum">Impressum</a></li>
+      </ul>
+    </div>
+    <div class="menu-right">
+      <ul *ngIf="!isLoggedIn()">
+        <li><a routerLink="/auth/signin">Login</a></li>
+        <li><a routerLink="/register">Register</a></li>
+      </ul>
+      <ul *ngIf="isLoggedIn()">
+        <li><span>{{ user()?.firstname }}</span></li>
+        <li><a (click)="logout()" style="cursor: pointer;">Logout</a></li>
+        <li><a routerLink="/dashboard">Dashboard</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>

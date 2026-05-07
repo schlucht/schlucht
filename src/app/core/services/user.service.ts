@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, throwError } from 'rxjs';
@@ -12,6 +12,12 @@ export class UserService {
   private httpClient = inject(HttpClient);
   private apiUrl = environment.API_URL;
 
+  userCount = signal(0);
+
+  constructor() {
+    this.getUsers();
+  }
+
   getUsers(): Observable<User[]> {
     return this.httpClient
       .get<ApiResponse<User[] | string>>(`${this.apiUrl}${environment.USER.ALL}`)
@@ -23,9 +29,10 @@ export class UserService {
 
         if (typeof response.data === 'string') {
           const parsed = JSON.parse(response.data) as unknown;
-          return Array.isArray(parsed) ? (parsed as User[]) : [];
+          const usr = Array.isArray(parsed) ? (parsed as User[]) : [];
+          this.userCount.set(usr.length);          
+          return usr;
         }
-
         return [];
       }),
       catchError((error) => {

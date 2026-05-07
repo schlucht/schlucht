@@ -29,7 +29,6 @@ export class Signin {
       Validators.minLength(6)
     ])
   });
-
   onSubmit(): void {
     if (this.signinForm.invalid) {
       return;

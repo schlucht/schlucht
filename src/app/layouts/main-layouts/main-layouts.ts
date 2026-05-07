@@ -11,13 +11,13 @@ import { AuthService } from '../../core/services/auth.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainLayouts {
-  private authService = inject(AuthService);
-  private router = inject(Router);
+  // private authService = inject(AuthService);
+  // private router = inject(Router);
   
-  user = computed(() => this.authService.user());
+  // user = computed(() => this.authService.user());
 
-  logout(): void {
-    this.authService.logout();
-    this.router.navigate(['/']);
-  }
+  // logout(): void {
+  //   this.authService.logout();
+  //   this.router.navigate(['/']);
+  // }
 }
