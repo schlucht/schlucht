@@ -1,5 +1,5 @@
-<div class="signin-container">
-  <div class="signin-card">
+<div class="form-container">
+  <div class="form-card">
     <h1>Anmelden</h1>
 
     @if (errorMessage()) {
@@ -57,11 +57,12 @@
         class="submit-button"
       >
         @if (isSubmitting()) {
-          <span>Wird geladen …</span>
+          <span>Wird geladen…</span>
         } @else {
           <span>Anmelden</span>
         }
       </button>
+      <p class="submit-link"> Ich habe noch kein Account, <a routerLink="/auth/register">Registrieren</a></p>
     </form>
   </div>
 </div>

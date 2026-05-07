@@ -11,14 +11,16 @@
       </ul>
     </div>
     <div class="menu-right">
-      <ul *ngIf="!isLoggedIn()">
-        <li><a routerLink="/auth/signin">Login</a></li>
-        <li><a routerLink="/register">Register</a></li>
-      </ul>
-      <ul *ngIf="isLoggedIn()">
-        <li><span>{{ user()?.firstname }}</span></li>
-        <li><a (click)="logout()" style="cursor: pointer;">Logout</a></li>
-        <li><a routerLink="/dashboard">Dashboard</a></li>
+      <ul>
+        @if (!isLoggedIn()) {
+          <li><a routerLink="/auth/signin">Login</a></li>
+          <li><a routerLink="/auth/register">Register</a></li>
+        }
+        @else {
+          <li><span>{{ user()?.firstname }}</span></li>
+          <li><a (click)="logout()" style="cursor: pointer;">Logout</a></li>
+          <li><a routerLink="/dashboard">Dashboard</a></li>
+        }
       </ul>
     </div>
   </nav>

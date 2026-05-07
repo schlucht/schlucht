@@ -7,7 +7,7 @@ import { UserService } from '../../core/services/user.service';
 
 @Component({
   selector: 'ots-home',
-  imports: [RouterLink, Card],
+  imports: [Card],
   templateUrl: './home.html',
   styleUrl: './home.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

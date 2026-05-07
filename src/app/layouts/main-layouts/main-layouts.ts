@@ -5,7 +5,7 @@ import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'ots-main-layouts',
-  imports: [RouterOutlet, Footer, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './main-layouts.html',
   styleUrl: './main-layouts.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -29,7 +29,7 @@ export class UserService {
 
         if (typeof response.data === 'string') {
           const parsed = JSON.parse(response.data) as unknown;
-          const usr = Array.isArray(parsed) ? (parsed as User[]) : [];
+          const usr = Array.isArray(parsed) ? (parsed as User[]) : [];          
           this.userCount.set(usr.length);          
           return usr;
         }
