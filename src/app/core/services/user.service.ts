@@ -11,6 +11,7 @@ import { ApiResponse } from '../models/http/apiResponse';
 export class UserService {
   private httpClient = inject(HttpClient);
   private apiUrl = environment.API_URL;
+  private registerUrl = environment.API_URL + environment.AUTH.REGISTER;
 
   userCount = signal(0);
 
@@ -40,5 +41,13 @@ export class UserService {
         return throwError(() => new Error('Failed to fetch user data. Please try again later.'));
       })
     );
+  }
+
+  newUser(user: User) {
+    if(user) {
+      const body = JSON.stringify(user);
+      const headers = { 'Content-Type': 'application/json' };
+      this.httpClient.post(this.registerUrl, body, { headers });
+    }
   }
 }

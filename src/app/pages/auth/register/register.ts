@@ -1,8 +1,10 @@
-import { Component, computed } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { passwordMatchValidator } from '../../../core/validators/passwordValidator';
 import { emailExistsValidator } from '../../../core/validators/emailConfirmValidator';
+import { UserService } from '../../../core/services/user.service';
+import { User } from '../../../core/models/user/user';
 
 @Component({
   selector: 'ots-register',
@@ -11,6 +13,8 @@ import { emailExistsValidator } from '../../../core/validators/emailConfirmValid
   styleUrl: './register.css',
 })
 export class Register {
+
+  private userService = inject(UserService);
 
   isSubmitting = computed(() => false);
   registerForm = new FormGroup({
@@ -42,8 +46,8 @@ export class Register {
 );
   onSubmit(){
     console.log(this.registerForm.invalid)
-    if(this.registerForm.invalid){
-      return true;
+    if(this.registerForm.invalid){      
+      this.userService.newUser(this.registerForm.value as User)
     }
     return false;
   }
