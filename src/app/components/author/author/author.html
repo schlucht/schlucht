@@ -1,0 +1,73 @@
+<div>
+    <h2>Buch Autoren</h2>
+    <div>
+        <button class="submit-button">Neuer Autor</button>
+    </div>
+    <div>
+        <form [formGroup]="authorForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="firstname">Vorname<span>*</span></label>
+                <input type="text" id="firstname" name="firstname" formControlName="firstname">
+                @if (authorForm.controls.firstname.invalid && authorForm.controls.firstname.touched) {
+                    <div class="field-error">
+                      @if (authorForm.controls.firstname.errors?.['required']) {
+                        <span>Vorname ist erforderlich</span>
+                      }                      
+                    </div>
+                  }
+            </div>
+            <div class="form-group">
+                <label for="last">Nachname<span>*</span></label>
+                <input type="text" id="lastname" name="lastanme" formControlName="lastname"/>
+                @if (authorForm.controls.lastname.invalid && authorForm.controls.lastname.touched) {
+                    <div class="field-error">
+                      @if (authorForm.controls.lastname.errors?.['required']) {
+                        <span>Nachname ist erforderlich</span>
+                      }                      
+                    </div>
+                  }
+            </div>
+            <div class="form-group">
+                <label for="country">Land</label>
+                <input type="country" id="country" name="country" formControlName="country"/>                
+            </div>
+            <div class="form-group">
+                <label for="description">Beschreibung</label>
+                <textarea id="description" name="description" formControlName="description"></textarea>
+            </div>
+            <button
+                type="submit"          
+                [disabled]="authorForm.valid || isSubmitting()"      
+                class="submit-button"
+            >Speichern</button>
+        </form>
+    </div>
+    <div class="author-list">
+        <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Vorname</th>
+                <th>Nachname</th>
+                <th>Land</th>
+                <th>Beschreibung</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (author of authors(); track author.id) {
+                <tr>
+                  <td>{{ author.id }}</td>
+                  <td>{{ author.firstname}}</td>
+                  <td>{{ author.lastname }}</td>
+                  <td>{{ author.country }}</td>
+                  <td>{{ author.description }}</td>
+                </tr>
+              } @empty {
+                <tr>
+                  <td colspan="3" class="empty">Keine Benutzer gefunden</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+    </div>
+</div>

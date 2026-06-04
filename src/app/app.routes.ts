@@ -39,7 +39,11 @@ export const routes: Routes = [
       {
         path: 'users',
         loadComponent: () => import('./pages/admin/users/users').then(m => m.Users)
-      }
+      },
+      {
+        path: 'author',
+        loadComponent: () => import('./pages/admin/author/author').then(m => m.Author)
+      },
     ]
   }
 ];
