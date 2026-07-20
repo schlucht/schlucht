@@ -44,10 +44,12 @@ export class Register {
     validators: passwordMatchValidator('password', 'password_confirm'),
   }
 );
-  onSubmit(){
-    console.log(this.registerForm.invalid)
+  onSubmit(){    
     if(this.registerForm.invalid){      
-      this.userService.newUser(this.registerForm.value as User)
+      this.userService.newUser(this.registerForm.value as User)?.subscribe({
+        next: n => console.log(n),
+        error: e => console.error(e)
+      })
     }
     return false;
   }

@@ -1,7 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { User } from '../models/user/user';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 import { LoginRequest, LoginResponse } from '../models/auth/login';
 import { catchError, map, Observable, of, tap, throwError } from 'rxjs';
 import { ApiResponse } from '../models/http/apiResponse';

@@ -42,7 +42,9 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "baseHref": "/schlucht/",
+              "deployUrl": "/schlucht/"
             },
             "development": {
               "optimization": false,

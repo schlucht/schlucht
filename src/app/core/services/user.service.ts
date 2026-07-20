@@ -1,5 +1,5 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { User } from '../models/user/user';
@@ -11,7 +11,7 @@ import { ApiResponse } from '../models/http/apiResponse';
 export class UserService {
   private httpClient = inject(HttpClient);
   private apiUrl = environment.API_URL;
-  private registerUrl = environment.API_URL + environment.AUTH.REGISTER;
+  private registerUrl = this.apiUrl + environment.AUTH.REGISTER;
 
   userCount = signal(0);
 
@@ -47,7 +47,8 @@ export class UserService {
     if(user) {
       const body = JSON.stringify(user);
       const headers = { 'Content-Type': 'application/json' };
-      this.httpClient.post(this.registerUrl, body, { headers });
+      return this.httpClient.post(this.registerUrl, body, { headers });
     }
+    return null
   }
 }

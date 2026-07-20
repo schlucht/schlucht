@@ -1,7 +1,15 @@
 export const environment = {
     API_URL: 'https://www.schmidschlucht.ch/api',
     AUTH: {
-        LOGIN: '/auth/login',
+        REGISTER: '/auth/register',
+        LOGIN: '/auth/login',        
     },
-    production: true,
+    USER: {
+        ME: '/users/me',
+        ALL: '/users',
+    },
+    AUTHOR: {
+        ALL_OR_CREATE: '/author',        
+    },
+    production: false
 };
